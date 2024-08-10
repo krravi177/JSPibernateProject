@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="max.parents.SHGBean" table="shg_detail">
+<id name="shgCode" column="shg">
+<generator class="native"/>
+</id>
+<property name="stCode" column="st_code"/>
+<property name="gname" column="shg_name"/>
+<property name="acc" column="shg_acc"/>
+<property name="ifsc" column="shg_ifsc"/>
+
+<list name="mlist" cascade="all">  
+          <key column="shgCode"></key>  
+          <index column="INX"></index>  
+          <one-to-many class="max.parents.MemberBean"/>  
+</list>
+
+</class>
+
+
+<class name="max.parents.MemberBean" table="member_detail">
+<id name="memCode" column="mem_code">
+<generator class="native"/>
+</id>
+<property name="cname" column="mem_name"/>
+<property name="age" column="mem_age"/>
+<property name="cadhar" column="mem_cadhar"/>
+</class>
+
+
+</hibernate-mapping>
